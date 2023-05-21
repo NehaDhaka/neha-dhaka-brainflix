@@ -1,6 +1,7 @@
 export function formatTimeStamp(timeStamp) {
   const now = new Date();
   const diff = Math.floor((now.getTime() - timeStamp) / 1000);
+
   if (diff < 60) {
     return `${diff} second${diff > 1 ? "s" : ""} ago`;
   } else if (diff < 3600) {
