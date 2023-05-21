@@ -1,0 +1,94 @@
+@import "../../styles/partials/fonts";
+@import "../../styles/partials/resets";
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.details {
+  &__comment-new {
+    padding: 1rem;
+
+    @include tablet {
+      padding: 1.5rem;
+    }
+  }
+
+  &__user-img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__form-field {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex: 3;
+    }
+  }
+
+  &__form-container {
+    display: flex;
+    gap: 1rem;
+    padding-top: 2rem;
+
+    @include tablet {
+      align-items: flex-end;
+    }
+  }
+
+  &__form {
+    flex: 1;
+
+    @include tablet {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-end;
+    }
+  }
+  &__form-label {
+    color: $primary-medium;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  &__form-input {
+    border: 1px solid $secondary-medium;
+    border-radius: 4px;
+    background-color: $secondary-light;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+
+    resize: none;
+
+    &:focus {
+      outline: 2px solid $primary-brand;
+    }
+
+    &::placeholder {
+      color: $secondary-dark;
+      font-family: "Avenir Next", Arial, Helvetica, sans-serif;
+    }
+
+    @include tablet {
+      height: 2.6rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &__form-btn {
+    width: 100%;
+
+    @include buttons;
+    @include tablet {
+      width: auto;
+      flex: 1;
+    }
+  }
+
+  &__btn-txt {
+    flex: 1;
+    font-size: 1rem;
+  }
+}
