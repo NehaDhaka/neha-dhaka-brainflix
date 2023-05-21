@@ -1,0 +1,12 @@
+@import "../../styles/partials/fonts";
+@import "../../styles/partials/resets";
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.details {
+  &__current {
+    @include desktop {
+      border-right: 2px solid $secondary-medium;
+    }
+  }
+}
