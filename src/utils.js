@@ -1,28 +1,22 @@
 export function formatTimeStamp(timeStamp) {
   const now = new Date();
-  const diff = Math.floor((now.getTime() - timeStamp) / 1000);
+  let diff = Math.floor((now.getTime() - timeStamp) / 1000);
+  const intervals = [
+    { unit: "second", duration: 60 },
+    { unit: "minute", duration: 60 },
+    { unit: "hour", duration: 24 },
+    { unit: "day", duration: 30 },
+    { unit: "month", duration: 12 },
+    { unit: "year", duration: Infinity },
+  ];
 
-  if (diff < 60) {
-    return `${diff} second${diff > 1 ? "s" : ""} ago`;
-  } else if (diff < 3600) {
-    return `${Math.floor(diff / 60)} minute${
-      Math.floor(diff / 60) > 1 ? "s" : ""
-    } ago`;
-  } else if (diff < 86400) {
-    return `${Math.floor(diff / 3600)} hour${
-      Math.floor(diff / 3600) > 1 ? "s" : ""
-    } ago`;
-  } else if (diff < 86400 * 30) {
-    return `${Math.floor(diff / 86400)} day${
-      Math.floor(diff / 86400) > 1 ? "s" : ""
-    } ago`;
-  } else if (diff < 86400 * 30 * 12) {
-    return `${Math.floor(diff / (86400 * 30))} month${
-      Math.floor(diff / (86400 * 30)) > 1 ? "s" : ""
-    } ago`;
-  } else {
-    return `${Math.floor(diff / (86400 * 30 * 12))} year${
-      Math.floor(diff / (86400 * 30 * 12)) > 1 ? "s" : ""
-    } ago`;
+  let index = 0;
+  while (diff >= intervals[index].duration && index < intervals.length - 1) {
+    diff /= intervals[index].duration;
+    index++;
   }
+
+  diff = Math.floor(diff);
+  const unit = intervals[index].unit;
+  return `${diff} ${unit}${diff > 1 ? "s" : ""} ago`;
 }
