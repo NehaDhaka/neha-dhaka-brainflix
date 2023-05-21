@@ -12,11 +12,11 @@ export default function Main() {
     return video.id !== currentPoster.id;
   });
 
-  // const updateCurrentVideo = function (id) {
-  //   const updatedCurrentPoster = videoDetails.find((video) => {
-  //     return id === video.id;
-  //   });
-  //   setCurrentPoster(updatedCurrentPoster);
+  const updateCurrentVideo = function (id) {
+    const updatedCurrentPoster = videoDetails.find((video) => {
+      return id === video.id;
+    });
+    setCurrentPoster(updatedCurrentPoster);
   };
   return (
     <main className="main">
