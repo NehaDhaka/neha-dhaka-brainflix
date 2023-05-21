@@ -1,22 +1,22 @@
 export function formatTimeStamp(timeStamp) {
   const now = new Date();
-  let diff = Math.floor((now.getTime() - timeStamp) / 1000);
-  const intervals = [
-    { unit: "second", duration: 60 },
+  const diff = Math.floor((now.getTime() - timeStamp) / 1000);
+
+  const timeUnits = [
+    { unit: "year", duration: 86400 * 30 * 12 },
+    { unit: "month", duration: 86400 * 30 },
+    { unit: "day", duration: 86400 },
+    { unit: "hour", duration: 3600 },
     { unit: "minute", duration: 60 },
-    { unit: "hour", duration: 24 },
-    { unit: "day", duration: 30 },
-    { unit: "month", duration: 12 },
-    { unit: "year", duration: Infinity },
+    { unit: "second", duration: 1 },
   ];
 
-  let index = 0;
-  while (diff >= intervals[index].duration && index < intervals.length - 1) {
-    diff /= intervals[index].duration;
-    index++;
+  for (const unit of timeUnits) {
+    if (diff >= unit.duration) {
+      const value = Math.floor(diff / unit.duration);
+      return `${value} ${unit.unit}${value > 1 ? "s" : ""} ago`;
+    }
   }
 
-  diff = Math.floor(diff);
-  const unit = intervals[index].unit;
-  return `${diff} ${unit}${diff > 1 ? "s" : ""} ago`;
+  return "Just now";
 }
