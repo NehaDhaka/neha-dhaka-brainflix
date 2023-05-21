@@ -1,0 +1,23 @@
+@import "../../styles/partials/fonts";
+@import "../../styles/partials/resets";
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.current-poster {
+  background-color: $secondary-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__video {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+
+    @include tablet {
+      width: 90%;
+    }
+    @include desktop {
+      width: 55%;
+    }
+  }
+}
