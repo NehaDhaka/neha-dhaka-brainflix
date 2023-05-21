@@ -1,0 +1,40 @@
+// MEDIA QUERIES
+
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+// REUSABLE STYLING
+@mixin align-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin buttons {
+  @include align-center;
+  background-color: $primary-brand;
+
+  height: 2.5rem;
+  border-style: none;
+  color: $primary-light;
+  padding: 0 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $secondary-brand;
+  }
+}
+
+@mixin desktop-width {
+  max-width: 1020px;
+  margin: 0 auto;
+}
