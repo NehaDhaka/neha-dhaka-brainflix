@@ -1,0 +1,121 @@
+@import "../../styles/partials/fonts";
+@import "../../styles/partials/resets";
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.details {
+  &__info {
+    padding: 0 1rem;
+
+    @include tablet {
+      padding: 0 1.5rem;
+    }
+
+    @include desktop {
+      padding: 0;
+    }
+  }
+
+  &__comments-number {
+    font-weight: bold;
+  }
+
+  &__title {
+    padding: 1.5rem 0 1rem 0;
+    line-height: 1.4;
+
+    @include tablet {
+      font-size: 1.8rem;
+    }
+    @include desktop {
+      padding: 2.25rem 1.5rem 1.5rem 0;
+      font-size: 2rem;
+    }
+  }
+
+  &__divider {
+    display: none;
+    @include tablet {
+      display: block;
+      border-top: 2px solid $secondary-medium;
+    }
+  }
+
+  &__current-stats {
+    padding: 1rem 0;
+    border-top: 2px solid $secondary-medium;
+    border-bottom: 2px solid $secondary-medium;
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      padding-top: 0;
+      border: none;
+      border-width: 2px;
+    }
+    @include desktop {
+      padding-right: 1.5rem;
+    }
+  }
+
+  &__current-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
+  &__current-right {
+    padding-right: 4rem;
+    @extend .details__current-left;
+    color: $primary-medium;
+
+    @include tablet {
+      padding-right: 0;
+    }
+  }
+
+  &__view-icon {
+    width: 1.4rem;
+  }
+
+  &__like-icon {
+    width: 1.4rem;
+  }
+
+  &__current-views {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.4rem;
+  }
+
+  &__current-likes {
+    @extend .details__current-views;
+  }
+
+  &__current-author {
+    font-weight: bold;
+  }
+
+  &__current-date {
+    color: $primary-medium;
+  }
+
+  &__current-description {
+    padding: 1.5rem 0;
+    line-height: 1.4;
+
+    @include tablet {
+      line-height: 1.5;
+    }
+    @include desktop {
+      padding-right: 1.5rem;
+    }
+  }
+}
