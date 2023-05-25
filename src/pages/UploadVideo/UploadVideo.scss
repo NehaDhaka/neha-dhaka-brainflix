@@ -1,0 +1,168 @@
+@import "../../styles/partials/fonts";
+@import "../../styles/partials/resets";
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.upload-video {
+  padding: 2rem 1rem 0 1rem;
+  border-top: 2px solid $secondary-medium;
+
+  @include tablet {
+    padding: 3rem 1.5rem 0 1.5rem;
+  }
+
+  @include desktop {
+    @include desktop-width;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  &__form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    @include tablet {
+      border-top: 2px solid $secondary-medium;
+      border-bottom: 2px solid $secondary-medium;
+      padding: 2rem 0;
+    }
+    @include desktop {
+      padding: 3rem 0;
+    }
+
+    @include desktop {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
+  &__form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    @include desktop {
+      flex: 1;
+    }
+  }
+
+  &__form-field {
+    display: flex;
+    flex-direction: column;
+  }
+  &__form-input {
+    border: 1px solid $secondary-medium;
+    border-radius: 4px;
+    background-color: $secondary-light;
+    padding: 0.75rem;
+
+    resize: none;
+
+    &:focus {
+      outline: 2px solid $primary-brand;
+    }
+
+    &::placeholder {
+      color: $secondary-dark;
+      font-family: "Avenir Next", Arial, Helvetica, sans-serif;
+    }
+
+    @include tablet {
+      height: 2.6rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &__form-input--textarea {
+    height: 4rem;
+
+    @include desktop {
+      height: 7.7rem;
+    }
+  }
+  &__title {
+    font-size: 1.8rem;
+    margin-bottom: 2.4rem;
+  }
+
+  &__form-label,
+  &__thumbnail-title {
+    color: $primary-medium;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  &__thumbnail-container {
+    @include desktop {
+      width: 40%;
+    }
+  }
+  &__thumbnail-img {
+    width: 100%;
+    border-radius: 4px;
+
+    @include tablet {
+      width: 50%;
+    }
+    @include desktop {
+      width: 100%;
+    }
+  }
+
+  &__upload-btn {
+    @include buttons;
+    width: 100%;
+    @include tablet {
+      width: 25%;
+    }
+    @include desktop {
+      width: 20%;
+    }
+  }
+
+  &__btn-text {
+    flex: 1;
+    font-size: 1rem;
+  }
+
+  &__cancel-btn {
+    width: 100%;
+    text-align: center;
+    @include tablet {
+      width: 25%;
+      display: flex;
+      align-items: center;
+    }
+    @include desktop {
+      width: 20%;
+    }
+  }
+
+  &__cancel-text {
+    margin-left: 24px;
+    font-size: 1rem;
+    color: $primary-brand;
+    cursor: pointer;
+  }
+
+  &__btn-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    @include tablet {
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+    }
+    @include desktop {
+      gap: 0rem;
+    }
+  }
+}
