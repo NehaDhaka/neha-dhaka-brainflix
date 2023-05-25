@@ -1,7 +1,7 @@
 import logo from "../../assets/Logo/BrainFlix-logo.svg";
 import userImage from "../../assets/Images/Mohan-muruge.jpg";
 import uploadIcon from "../../assets/Icons/upload.svg";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 import "./Header.scss";
 
@@ -9,9 +9,9 @@ export default function Header() {
   return (
     <>
       <header className="header">
-        <a className="header__logo-container" href="../.././public/index.html">
+        <Link className="header__logo-container" to="/">
           <img className="header__logo" src={logo} alt="BrainFlix Logo" />
-        </a>
+        </Link>
         <form className="header__form">
           <div className="header__search-container">
             <input
@@ -19,10 +19,13 @@ export default function Header() {
               id="video-name"
               placeholder="Search"
             />
-            <button type="submit" className="header__btn--tablet">
-              <img className="header__upload-icon" src={uploadIcon} />
-              <span className="header__btn-txt">UPLOAD</span>
-            </button>
+            <Link className="header__upload-link" to="/upload">
+              <button type="submit" className="header__btn--tablet">
+                <img className="header__upload-icon" src={uploadIcon} />
+                <span className="header__btn-txt">UPLOAD</span>
+              </button>
+            </Link>
+
             <img
               className="header__user-img"
               src={userImage}

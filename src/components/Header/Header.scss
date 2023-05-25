@@ -24,6 +24,9 @@
     height: 1.6rem;
   }
 
+  &__upload-link {
+    text-decoration: none;
+  }
   &__form {
     @include align-center;
     flex-direction: column;
