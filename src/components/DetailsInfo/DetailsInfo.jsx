@@ -1,7 +1,7 @@
 import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
 import "./DetailsInfo.scss";
-import { formatTimeStamp } from "../../utils.js";
+import { formatTimeStamp } from "../../utils/format";
 
 export default function DetailsInfo({ currentPoster }) {
   let timeContent = formatTimeStamp(currentPoster.timestamp);

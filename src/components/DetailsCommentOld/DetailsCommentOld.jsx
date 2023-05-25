@@ -1,5 +1,5 @@
 import "./DetailsCommentOld.scss";
-import { formatTimeStamp } from "../../utils.js";
+import { formatTimeStamp } from "../../utils/format";
 
 export default function ({ currentPoster }) {
   let timeContent = formatTimeStamp(currentPoster.timestamp);
