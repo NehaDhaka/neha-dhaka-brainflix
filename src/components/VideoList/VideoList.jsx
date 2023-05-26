@@ -28,7 +28,7 @@ export default function VideoList({ currentPosterId }) {
       <ul className="details__next-list">
         {filteredList.map((video) => {
           return (
-            <Link to={`/${video.id}`}>
+            <Link className="details__link-container" to={`/${video.id}`}>
               <li key={video.id} className="details__next-item">
                 <img
                   className="details__next-preview"

@@ -1,16 +1,22 @@
 import thumbnailImage from "../../assets/Images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/Icons/publish.svg";
 import "./UploadPage.scss";
+import { Navigate } from "react-router-dom";
 
 // This component renders Upload page with a form where user can upload a new video. The feature won't work in this sprint. This components does not require any prop.
 
 export default function UploadPage() {
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("Form Submitted");
+    <Route path="/" element={<Navigate to="/" />} />;
+  }
   return (
     <>
       <hr className="upload-video__divider" />
       <section className="upload-video">
         <h1 className="upload-video__title">Upload Video</h1>
-        <form className="upload-video__form">
+        <form onSubmit={handleSubmit} className="upload-video__form">
           <div className="upload-video__form-container">
             <div className="upload-video__thumbnail-container">
               <p className="upload-video__thumbnail-title">VIDEO THUMBNAIL</p>

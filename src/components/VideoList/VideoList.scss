@@ -61,4 +61,9 @@
     font-weight: bold;
     line-height: 1.2;
   }
+
+  &__link-container {
+    text-decoration: none;
+    color: $secondary-dark;
+  }
 }
