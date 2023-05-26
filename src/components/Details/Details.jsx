@@ -4,15 +4,16 @@ import "./Details.scss";
 
 export default function Details({
   videoList,
-  currentPoster,
+  currentPosterId,
   updateCurrentVideo,
 }) {
   return (
     <section className="details">
-      <DetailsCurrent currentPoster={currentPoster} />
+      <DetailsCurrent currentPosterId={currentPosterId} />
       <DetailsNext
-        updateCurrentVideo={updateCurrentVideo}
-        videoList={videoList}
+        // updateCurrentVideo={updateCurrentVideo}
+        // videoList={videoList}
+        currentPosterId={currentPosterId}
       />
     </section>
   );

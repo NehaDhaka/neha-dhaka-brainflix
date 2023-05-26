@@ -1,7 +1,21 @@
 import "./DetailsCommentOld.scss";
 import { formatTimeStamp } from "../../utils/format";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { videosURL, apiKey } from "../../utils/api";
 
-export default function ({ currentPoster }) {
+export default function ({ currentPosterId }) {
+  const [currentPoster, setCurrentPoster] = useState(null);
+  console.log(videosURL, apiKey);
+  useEffect(() => {
+    axios
+      .get(`${videosURL}/${currentPosterId}?api_key=${apiKey}`)
+      .then((response) => setCurrentPoster(response.data));
+  }, [currentPoster]);
+
+  if (!currentPoster) {
+    return <h1>Loading..</h1>;
+  }
   let timeContent = formatTimeStamp(currentPoster.timestamp);
 
   return (

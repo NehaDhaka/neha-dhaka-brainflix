@@ -2,8 +2,22 @@ import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
 import "./DetailsInfo.scss";
 import { formatTimeStamp } from "../../utils/format";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { videosURL, apiKey } from "../../utils/api";
 
-export default function DetailsInfo({ currentPoster }) {
+export default function DetailsInfo({ currentPosterId }) {
+  const [currentPoster, setCurrentPoster] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`${videosURL}/${currentPosterId}?api_key=${apiKey}`)
+      .then((response) => setCurrentPoster(response.data));
+  }, [currentPosterId]);
+  if (!currentPoster) {
+    return <h1>Loading..</h1>;
+  }
+
   let timeContent = formatTimeStamp(currentPoster.timestamp);
 
   return (
