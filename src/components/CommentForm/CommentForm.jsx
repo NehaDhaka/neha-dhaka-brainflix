@@ -2,6 +2,8 @@ import userImage from "../../assets/Images/Mohan-muruge.jpg";
 import commentIcon from "../../assets/Icons/add_comment.svg";
 import "./CommentForm.scss";
 
+// This component renders a comment form. This comment form takes user name and user comment as it's input values. This component does not require any props.
+
 export default function CommentForm() {
   return (
     <div className="details__comment-new">

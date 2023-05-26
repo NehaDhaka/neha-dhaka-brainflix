@@ -6,6 +6,8 @@ import axios from "axios";
 import { api } from "../../utils/api";
 import { useParams } from "react-router-dom";
 
+// This component renders Home page and loads with the default video. This components does not require any prop.
+
 export default function HomePage() {
   const posterId = useParams();
   const [defaultPosterId, setDefaultPosterId] = useState(null);

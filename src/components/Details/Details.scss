@@ -9,4 +9,10 @@
 
     @include desktop-width;
   }
+
+  &__current {
+    @include desktop {
+      border-right: 2px solid $secondary-medium;
+    }
+  }
 }

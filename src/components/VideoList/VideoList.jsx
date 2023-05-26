@@ -4,6 +4,8 @@ import axios from "axios";
 import { videosURL, apiKey } from "../../utils/api";
 import { Link } from "react-router-dom";
 
+// This component renders the list of the filtered videos.  This component require one prop(currentPosterId) which is the id of the active video.
+
 export default function VideoList({ currentPosterId }) {
   const [videoList, setVideoList] = useState(null);
 

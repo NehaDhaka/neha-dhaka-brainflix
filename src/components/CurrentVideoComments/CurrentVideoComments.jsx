@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { videosURL, apiKey } from "../../utils/api";
 
+// This component renders the list of the posted comments of the active video. This component require one prop(currentPosterId) which is the id of the active video.
+
 export default function CurrentVideoComments({ currentPosterId }) {
   const [currentPoster, setCurrentPoster] = useState(null);
 

@@ -5,6 +5,8 @@ import CurrentVideoComments from "../CurrentVideoComments/CurrentVideoComments";
 import VideoList from "../VideoList/VideoList";
 import "./Details.scss";
 
+// This component structures the layout of the main content of the page(except current video poster). This component require one prop(currentPosterId) which is the id of the active video.
+
 export default function Details({ currentPosterId }) {
   return (
     <section className="details">

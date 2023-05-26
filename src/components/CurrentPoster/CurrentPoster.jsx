@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { videosURL, apiKey } from "../../utils/api";
 
+// This component renders the poster of the active video. This component require one prop(currentPosterId) which is the id of the active video.
+
 export default function CurrentPoster({ currentPosterId }) {
   const [currentPoster, setCurrentPoster] = useState(null);
 

@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { videosURL, apiKey } from "../../utils/api";
 
+// This component renders the description and stats of the active video. This component require one prop(currentPosterId) which is the id of the active video.
+
 export default function CurrentVideoDetails({ currentPosterId }) {
   const [currentPoster, setCurrentPoster] = useState(null);
 

@@ -2,6 +2,8 @@ import thumbnailImage from "../../assets/Images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/Icons/publish.svg";
 import "./UploadPage.scss";
 
+// This component renders Upload page with a form where user can upload a new video. The feature won't work in this sprint. This components does not require any prop.
+
 export default function UploadPage() {
   return (
     <>
