@@ -6,12 +6,12 @@ import { videosURL, apiKey } from "../../utils/api";
 
 export default function ({ currentPosterId }) {
   const [currentPoster, setCurrentPoster] = useState(null);
-  console.log(videosURL, apiKey);
+
   useEffect(() => {
     axios
       .get(`${videosURL}/${currentPosterId}?api_key=${apiKey}`)
       .then((response) => setCurrentPoster(response.data));
-  }, [currentPoster]);
+  }, [currentPosterId]);
 
   if (!currentPoster) {
     return <h1>Loading..</h1>;
