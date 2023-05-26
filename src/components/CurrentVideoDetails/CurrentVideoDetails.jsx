@@ -1,12 +1,12 @@
 import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
-import "./DetailsInfo.scss";
+import "./CurrentVideoDetails.scss";
 import { formatTimeStamp } from "../../utils/format";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { videosURL, apiKey } from "../../utils/api";
 
-export default function DetailsInfo({ currentPosterId }) {
+export default function CurrentVideoDetails({ currentPosterId }) {
   const [currentPoster, setCurrentPoster] = useState(null);
 
   useEffect(() => {

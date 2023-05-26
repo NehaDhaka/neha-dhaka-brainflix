@@ -1,8 +1,8 @@
 import thumbnailImage from "../../assets/Images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/Icons/publish.svg";
-import "./UploadVideo.scss";
+import "./UploadPage.scss";
 
-export default function UploadVideo() {
+export default function UploadPage() {
   return (
     <>
       <hr className="upload-video__divider" />

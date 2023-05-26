@@ -2,7 +2,6 @@ import logo from "../../assets/Logo/BrainFlix-logo.svg";
 import userImage from "../../assets/Images/Mohan-muruge.jpg";
 import uploadIcon from "../../assets/Icons/upload.svg";
 import { Outlet, Link } from "react-router-dom";
-
 import "./Header.scss";
 
 export default function Header() {

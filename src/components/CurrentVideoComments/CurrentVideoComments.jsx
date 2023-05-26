@@ -1,10 +1,10 @@
-import "./DetailsCommentOld.scss";
+import "./CurrentVideoComments.scss";
 import { formatTimeStamp } from "../../utils/format";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { videosURL, apiKey } from "../../utils/api";
 
-export default function ({ currentPosterId }) {
+export default function CurrentVideoComments({ currentPosterId }) {
   const [currentPoster, setCurrentPoster] = useState(null);
 
   useEffect(() => {

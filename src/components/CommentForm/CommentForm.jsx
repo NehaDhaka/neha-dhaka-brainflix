@@ -1,8 +1,8 @@
 import userImage from "../../assets/Images/Mohan-muruge.jpg";
 import commentIcon from "../../assets/Icons/add_comment.svg";
-import "./DetailsCommentNew.scss";
+import "./CommentForm.scss";
 
-export default function DetailsCommentNew() {
+export default function CommentForm() {
   return (
     <div className="details__comment-new">
       <div className="details__form-container">

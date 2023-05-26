@@ -1,10 +1,10 @@
-import "./DetailsNext.scss";
+import "./VideoList.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { videosURL, apiKey } from "../../utils/api";
 import { Link } from "react-router-dom";
 
-export default function DetailsNext({ currentPosterId }) {
+export default function VideoList({ currentPosterId }) {
   const [videoList, setVideoList] = useState(null);
 
   useEffect(() => {
@@ -12,9 +12,11 @@ export default function DetailsNext({ currentPosterId }) {
       .get(`${videosURL}/?api_key=${apiKey}`)
       .then((response) => setVideoList(response.data));
   }, []);
+
   if (!videoList) {
     return <h1>Loading..</h1>;
   }
+
   const filteredList = videoList.filter(
     (video) => video.id !== currentPosterId
   );
@@ -25,13 +27,7 @@ export default function DetailsNext({ currentPosterId }) {
         {filteredList.map((video) => {
           return (
             <Link to={`/${video.id}`}>
-              <li
-                // onClick={() => {
-                //   updateCurrentVideo(video.id);
-                // }}
-                key={video.id}
-                className="details__next-item"
-              >
+              <li key={video.id} className="details__next-item">
                 <img
                   className="details__next-preview"
                   src={video.image}
