@@ -5,7 +5,7 @@ import videoList from "../../data/videos.json";
 import videoDetails from "../../data/video-details.json";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { api } from "../../utils/api";
+import { videosURL, apiKey, api } from "../../utils/api";
 import { useParams } from "react-router-dom";
 
 export default function MainC() {
@@ -22,6 +22,17 @@ export default function MainC() {
 
   const currentPosterId = posterId.id || defaultPosterId;
 
+  const [currentPoster, setCurrentPoster] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`${videosURL}/${currentPosterId}/api_key=${apiKey}`)
+      .then((response) => setCurrentPoster(response.data));
+  }, [currentPosterId]);
+
+  if (!currentPoster) {
+    return <h1>Loading..</h1>;
+  }
   // console.log(currentPosterId);
 
   // const filteredList = videoList.filter((video) => {
@@ -36,7 +47,7 @@ export default function MainC() {
   // };
   return (
     <main className="main">
-      {<CurrentPoster currentPosterId={currentPosterId} />}
+      {<CurrentPoster currentPoster={currentPoster} />}
       {
         <Details
           // updateCurrentVideo={updateCurrentVideo}
