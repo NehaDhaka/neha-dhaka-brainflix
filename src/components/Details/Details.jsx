@@ -1,5 +1,7 @@
 // import DetailsCurrent from "../DetailsCurrent/DetailsCurrent";
 import CurrentVideoDetails from "../CurrentVideoDetails/CurrentVideoDetails";
+import CommentForm from "../CommentForm/CommentForm";
+import CurrentVideoComments from "../CurrentVideoComments/CurrentVideoComments";
 import VideoList from "../VideoList/VideoList";
 import "./Details.scss";
 
