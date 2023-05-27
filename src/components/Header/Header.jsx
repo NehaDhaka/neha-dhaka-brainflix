@@ -4,8 +4,6 @@ import uploadIcon from "../../assets/Icons/upload.svg";
 import { Outlet, Link } from "react-router-dom";
 import "./Header.scss";
 
-// This component renders the header of the page and uses Outlet from 'react-router-dom' which helps us to render it on both Home Page and Upload Page. This component does not require any prop.
-
 export default function Header() {
   return (
     <>

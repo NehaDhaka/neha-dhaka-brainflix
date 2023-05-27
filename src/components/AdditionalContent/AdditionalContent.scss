@@ -3,14 +3,14 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/mixins";
 
-.details {
+.additional {
   @include desktop {
     display: flex;
 
     @include desktop-width;
   }
 
-  &__current {
+  &__active {
     @include desktop {
       border-right: 2px solid $secondary-medium;
     }

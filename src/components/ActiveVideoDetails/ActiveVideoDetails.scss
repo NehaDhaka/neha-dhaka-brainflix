@@ -3,21 +3,15 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/mixins";
 
-.details {
-  &__info {
-    padding: 0 1rem;
+.video-description {
+  padding: 0 1rem;
 
-    @include tablet {
-      padding: 0 1.5rem;
-    }
-
-    @include desktop {
-      padding: 0;
-    }
+  @include tablet {
+    padding: 0 1.5rem;
   }
 
-  &__comments-number {
-    font-weight: bold;
+  @include desktop {
+    padding: 0;
   }
 
   &__title {
@@ -33,15 +27,7 @@
     }
   }
 
-  &__divider {
-    display: none;
-    @include tablet {
-      display: block;
-      border-top: 2px solid $secondary-medium;
-    }
-  }
-
-  &__current-stats {
+  &__stats {
     padding: 1rem 0;
     border-top: 2px solid $secondary-medium;
     border-bottom: 2px solid $secondary-medium;
@@ -58,7 +44,7 @@
     }
   }
 
-  &__current-left {
+  &__stat {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,46 +54,37 @@
       flex-direction: row;
       gap: 2rem;
     }
-  }
 
-  &__current-right {
-    padding-right: 4rem;
-    @extend .details__current-left;
-    color: $primary-medium;
+    &--right {
+      padding-right: 4rem;
+      color: $primary-medium;
 
-    @include tablet {
-      padding-right: 0;
+      @include tablet {
+        padding-right: 0;
+      }
     }
   }
 
-  &__view-icon {
-    width: 1.4rem;
+  &__bold-text {
+    font-weight: bold;
   }
 
-  &__like-icon {
-    width: 1.4rem;
+  &__date {
+    color: $primary-medium;
   }
 
-  &__current-views {
+  &__numbers {
     display: flex;
     align-items: center;
     width: 100%;
     gap: 0.4rem;
   }
 
-  &__current-likes {
-    @extend .details__current-views;
+  &__icon {
+    width: 1.4rem;
   }
 
-  &__current-author {
-    font-weight: bold;
-  }
-
-  &__current-date {
-    color: $primary-medium;
-  }
-
-  &__current-description {
+  &__content {
     padding: 1.5rem 0;
     line-height: 1.4;
 
@@ -116,6 +93,14 @@
     }
     @include desktop {
       padding-right: 1.5rem;
+    }
+  }
+
+  &__divider {
+    display: none;
+    @include tablet {
+      display: block;
+      border-top: 2px solid $secondary-medium;
     }
   }
 }

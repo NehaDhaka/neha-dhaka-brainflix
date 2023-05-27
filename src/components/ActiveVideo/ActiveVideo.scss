@@ -3,13 +3,13 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/mixins";
 
-.current-poster {
+.active-video {
   background-color: $secondary-dark;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  &__video {
+  &__container {
     aspect-ratio: 16/9;
     object-fit: cover;
 

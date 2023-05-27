@@ -3,20 +3,59 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/mixins";
 
-.upload-video {
-  padding: 2rem 1rem 0 1rem;
+.upload {
+  &__content {
+    padding: 2rem 1rem 0 1rem;
 
-  @include tablet {
-    padding: 3rem 1.5rem 0 1.5rem;
+    @include tablet {
+      padding: 3rem 1.5rem 0 1.5rem;
+    }
+
+    @include desktop {
+      @include desktop-width;
+    }
   }
 
-  @include desktop {
-    @include desktop-width;
+  &__blur {
+    filter: blur(2px);
+  }
+
+  &__hide {
+    display: none;
+  }
+
+  &__pop-up {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    z-index: 99;
   }
 
   &__divider {
     border-top: 1px solid $secondary-medium;
   }
+
+  &__pop-text {
+    padding: 2rem;
+    background-color: $secondary-medium;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    width: 100%;
+    margin: 0 1rem;
+
+    @include tablet {
+      width: 75%;
+    }
+
+    @include desktop {
+      width: 50%;
+    }
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
@@ -58,6 +97,7 @@
     display: flex;
     flex-direction: column;
   }
+
   &__form-input {
     border: 1px solid $secondary-medium;
     border-radius: 4px;

@@ -1,67 +1,81 @@
 import thumbnailImage from "../../assets/Images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/Icons/publish.svg";
 import "./UploadPage.scss";
-import { Navigate } from "react-router-dom";
-
-// This component renders Upload page with a form where user can upload a new video. The feature won't work in this sprint. This components does not require any prop.
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function UploadPage() {
-  function handleSubmit(event) {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const navigate = useNavigate();
+
+  function handleOnSubmit(event) {
+    setIsSubmitted((prev) => !prev);
     event.preventDefault();
-    console.log("Form Submitted");
-    <Route path="/" element={<Navigate to="/" />} />;
+    setTimeout(() => {
+      navigate("/");
+    }, 4000);
   }
+
   return (
-    <>
-      <hr className="upload-video__divider" />
-      <section className="upload-video">
-        <h1 className="upload-video__title">Upload Video</h1>
-        <form onSubmit={handleSubmit} className="upload-video__form">
-          <div className="upload-video__form-container">
-            <div className="upload-video__thumbnail-container">
-              <p className="upload-video__thumbnail-title">VIDEO THUMBNAIL</p>
+    <section className="upload">
+      <hr className="upload__divider" />
+      <div className={`upload__${isSubmitted ? "pop-up" : "hide"}`}>
+        <p className="upload__pop-text">
+          Form has been succesfully submitted. You will be redirected to the
+          home page in 4 seconds..
+        </p>
+      </div>
+      <div className={`upload__content ${isSubmitted && "upload__blur"}`}>
+        <h1 className="upload__title">Upload Video</h1>
+        <form onSubmit={handleOnSubmit} className="upload__form">
+          <div className="upload__form-container">
+            <div className="upload__thumbnail-container">
+              <p className="upload__thumbnail-title">VIDEO THUMBNAIL</p>
               <img
-                className="upload-video__thumbnail-img"
+                className="upload__thumbnail-img"
                 src={thumbnailImage}
                 alt="video thumbnail"
               />
             </div>
-            <div className="upload-video__form-fields">
-              <div className="upload-video__form-field">
-                <label className="upload-video__form-label" htmlFor="">
+            <div className="upload__form-fields">
+              <div className="upload__form-field">
+                <label className="upload__form-label" htmlFor="title">
                   TITLE YOUR VIDEO
                 </label>
                 <input
-                  className="upload-video__form-input"
+                  className="upload__form-input"
                   name="title"
+                  id="title"
                   type="text"
                   placeholder="Add a title to your video"
                 />
               </div>
-              <div className="upload-video__form-field">
-                <label className="upload-video__form-label" htmlFor="">
+              <div className="upload__form-field">
+                <label className="upload__form-label" htmlFor="description">
                   ADD A VIDEO DESCRIPTION
                 </label>
                 <textarea
                   name="description"
-                  className="upload-video__form-input upload-video__form-input--textarea"
+                  id="description"
+                  className="upload__form-input upload__form-input--textarea"
                   placeholder="Add a description to your video"
                 ></textarea>
               </div>
             </div>
           </div>
-          <div className="upload-video__btn-container">
-            <button className="upload-video__upload-btn">
+          <div className="upload__btn-container">
+            <button className="upload__upload-btn">
               <img src={uploadIcon} alt="upload icon" />
-              <span className="upload-video__btn-text">PUBLISH</span>
+              <span className="upload__btn-text">PUBLISH</span>
             </button>
 
-            <div className="upload-video__cancel-btn">
-              <span className="upload-video__cancel-text">CANCEL</span>
+            <div className="upload__cancel-btn">
+              <span className="upload__cancel-text">CANCEL</span>
             </div>
           </div>
         </form>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
