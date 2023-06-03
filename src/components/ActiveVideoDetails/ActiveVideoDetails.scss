@@ -82,6 +82,10 @@
 
   &__icon {
     width: 1.4rem;
+
+    &--like {
+      cursor: pointer;
+    }
   }
 
   &__content {

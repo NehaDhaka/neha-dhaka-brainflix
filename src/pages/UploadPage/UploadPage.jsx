@@ -1,20 +1,31 @@
-import thumbnailImage from "../../assets/Images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/Icons/publish.svg";
 import "./UploadPage.scss";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
-export default function UploadPage() {
+const baseURL = process.env.REACT_APP_BASE_URL;
+
+export default function UploadPage({ handleOnSubmit }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isValid, setIsValid] = useState(true);
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    image: null,
+  });
 
   const navigate = useNavigate();
-
-  function handleOnSubmit(event) {
-    setIsSubmitted((prev) => !prev);
-    event.preventDefault();
-    setTimeout(() => {
-      navigate("/");
-    }, 4000);
+  console.log(formData);
+  function handleOnChange(event) {
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [event.target.name]:
+          event.target.name === "image"
+            ? event.target.files[0]
+            : event.target.value,
+      };
+    });
   }
 
   return (
@@ -28,15 +39,22 @@ export default function UploadPage() {
       </div>
       <div className={`upload__content ${isSubmitted && "upload__blur"}`}>
         <h1 className="upload__title">Upload Video</h1>
-        <form onSubmit={handleOnSubmit} className="upload__form">
+        <form
+          onSubmit={(event) => {
+            handleOnSubmit(event, formData, setIsSubmitted, setIsValid);
+            if (isValid) {
+              setTimeout(() => {
+                navigate("/");
+              }, 4000);
+            }
+          }}
+          className="upload__form"
+        >
           <div className="upload__form-container">
             <div className="upload__thumbnail-container">
               <p className="upload__thumbnail-title">VIDEO THUMBNAIL</p>
-              <img
-                className="upload__thumbnail-img"
-                src={thumbnailImage}
-                alt="video thumbnail"
-              />
+
+              <input type="file" name="image" onChange={handleOnChange} />
             </div>
             <div className="upload__form-fields">
               <div className="upload__form-field">
@@ -44,11 +62,15 @@ export default function UploadPage() {
                   TITLE YOUR VIDEO
                 </label>
                 <input
-                  className="upload__form-input"
+                  className={`upload__form-input ${
+                    !isValid && "upload__error"
+                  }`}
                   name="title"
                   id="title"
                   type="text"
                   placeholder="Add a title to your video"
+                  onChange={handleOnChange}
+                  value={formData.title}
                 />
               </div>
               <div className="upload__form-field">
@@ -58,8 +80,12 @@ export default function UploadPage() {
                 <textarea
                   name="description"
                   id="description"
-                  className="upload__form-input upload__form-input--textarea"
+                  className={`upload__form-input upload__form-input--textarea ${
+                    !isValid && "upload__error"
+                  }`}
                   placeholder="Add a description to your video"
+                  onChange={handleOnChange}
+                  value={formData.description}
                 ></textarea>
               </div>
             </div>
@@ -70,9 +96,9 @@ export default function UploadPage() {
               <span className="upload__btn-text">PUBLISH</span>
             </button>
 
-            <div className="upload__cancel-btn">
+            <Link to="/" className="upload__cancel-btn">
               <span className="upload__cancel-text">CANCEL</span>
-            </div>
+            </Link>
           </div>
         </form>
       </div>

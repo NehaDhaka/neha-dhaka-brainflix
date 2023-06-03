@@ -1,10 +1,16 @@
 import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
+import likesFilledIcon from "../../assets/Icons/likes filled.svg";
 import "./ActiveVideoDetails.scss";
 import { formatTimeStamp } from "../../utils/format";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-export default function ActiveVideoDetails({ activeVideo }) {
+const baseURL = process.env.REACT_APP_BASE_URL;
+
+export default function ActiveVideoDetails({ activeVideo, handleLikeClick }) {
   let timeContent = formatTimeStamp(activeVideo.timestamp);
+  const [likes, setLikes] = useState(activeVideo.likes);
 
   return (
     <div key={activeVideo.id} className="video-description">
@@ -27,9 +33,12 @@ export default function ActiveVideoDetails({ activeVideo }) {
           </div>
           <div className="video-description__numbers ">
             <img
-              className="video-description__icon"
+              className="video-description__icon video-description__icon--like"
               src={likesIcon}
               alt="View Icon"
+              onClick={() => {
+                handleLikeClick(setLikes);
+              }}
             />
             <span className="video-description__like">{activeVideo.likes}</span>
           </div>

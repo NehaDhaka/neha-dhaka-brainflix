@@ -3,9 +3,10 @@ import AdditionalContent from "../../components/AdditionalContent/AdditionalCont
 import "./HomePage.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { videosURL, apiKey } from "../../utils/api";
 import { useParams } from "react-router-dom";
 import { getAxios } from "../../utils/get";
+
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 export default function HomePage({ videoList }) {
   const posterId = useParams();
@@ -18,8 +19,17 @@ export default function HomePage({ videoList }) {
     getAxios(currentPosterId, setActiveVideo);
   }, [currentPosterId]);
 
-  if (!activeVideo) {
-    return <h1>Loading..</h1>;
+  if (activeVideo === null) {
+    return <h1 className="error">Loading..</h1>;
+  }
+
+  const id = videoList.find((video) => video.id === currentPosterId);
+  if (!id) {
+    return (
+      <h1 className="error">
+        Sorry, the video you are looking for does not exist..
+      </h1>
+    );
   }
 
   const filteredList = videoList.filter(
@@ -29,11 +39,11 @@ export default function HomePage({ videoList }) {
   function handleOnClick(commentId) {
     console.log(commentId + " deleted");
     axios
-      .delete(
-        `${videosURL}/${currentPosterId}/comments/${commentId}/?api_key=${apiKey}`
-      )
+      .delete(`${baseURL}videos/${currentPosterId}/comments/${commentId}/`)
       .then(() => {
-        getAxios(currentPosterId, setActiveVideo);
+        getAxios(currentPosterId, setActiveVideo).catch((error) => {
+          console.log(error);
+        });
       });
   }
 
@@ -41,12 +51,28 @@ export default function HomePage({ videoList }) {
     event.preventDefault();
 
     axios
-      .post(`${videosURL}/${currentPosterId}/comments/?api_key=${apiKey}`, {
-        name: "Neha Dhaka",
+      .post(`${baseURL}videos/${currentPosterId}/comments/`, {
         comment: commentData,
       })
       .then(() => {
         getAxios(currentPosterId, setActiveVideo);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  function handleLikeClick(setLikes) {
+    axios
+      .put(`${baseURL}videos/${currentPosterId}/likes`)
+      .then((response) => {
+        setLikes(response.data);
+      })
+      .then(() => {
+        getAxios(currentPosterId, setActiveVideo);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
@@ -58,6 +84,7 @@ export default function HomePage({ videoList }) {
         filteredList={filteredList}
         handleOnSubmit={handleOnSubmit}
         handleOnClick={handleOnClick}
+        handleLikeClick={handleLikeClick}
       />
     </main>
   );
