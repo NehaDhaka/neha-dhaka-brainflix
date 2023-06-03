@@ -67,7 +67,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-
+    width: 100%;
     @include tablet {
       border-top: 2px solid $secondary-medium;
       border-bottom: 2px solid $secondary-medium;
@@ -99,7 +99,8 @@
   }
 
   &__form-input {
-    border: 1px solid $secondary-medium;
+    outline: 1px solid $secondary-medium;
+    border: none;
     border-radius: 4px;
     background-color: $secondary-light;
     padding: 0.75rem;
@@ -119,6 +120,9 @@
       height: 2.6rem;
       margin-bottom: 0;
     }
+  }
+  &__error {
+    outline: 2px solid red;
   }
 
   &__form-input--textarea {

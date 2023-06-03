@@ -1,8 +1,11 @@
 import axios from "axios";
-import { videosURL, apiKey } from "./api";
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 export function getAxios(currentPosterId, setActiveVideo) {
   axios
-    .get(`${videosURL}/${currentPosterId}/?api_key=${apiKey}`)
-    .then((response) => setActiveVideo(response.data));
+    .get(`${baseURL}videos/${currentPosterId}`)
+    .then((response) => setActiveVideo(response.data))
+    .catch((error) => {
+      console.log(error);
+    });
 }

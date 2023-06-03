@@ -12,6 +12,7 @@
 
   &__active {
     @include desktop {
+      flex: 1;
       border-right: 2px solid $secondary-medium;
     }
   }
