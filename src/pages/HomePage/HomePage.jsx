@@ -62,6 +62,20 @@ export default function HomePage({ videoList }) {
       });
   }
 
+  function handleLikeClick(setLikes) {
+    axios
+      .put(`${baseURL}videos/${currentPosterId}/likes`)
+      .then((response) => {
+        setLikes(response.data);
+      })
+      .then(() => {
+        getAxios(currentPosterId, setActiveVideo);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <main className="main">
       <ActiveVideo activeVideo={activeVideo.image} />
@@ -70,6 +84,7 @@ export default function HomePage({ videoList }) {
         filteredList={filteredList}
         handleOnSubmit={handleOnSubmit}
         handleOnClick={handleOnClick}
+        handleLikeClick={handleLikeClick}
       />
     </main>
   );

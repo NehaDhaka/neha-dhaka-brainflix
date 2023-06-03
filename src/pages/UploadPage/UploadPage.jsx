@@ -1,9 +1,7 @@
-import thumbnailImage from "../../assets/Images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/Icons/publish.svg";
 import "./UploadPage.scss";
 import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
@@ -98,9 +96,9 @@ export default function UploadPage({ handleOnSubmit }) {
               <span className="upload__btn-text">PUBLISH</span>
             </button>
 
-            <div className="upload__cancel-btn">
+            <Link to="/" className="upload__cancel-btn">
               <span className="upload__cancel-text">CANCEL</span>
-            </div>
+            </Link>
           </div>
         </form>
       </div>

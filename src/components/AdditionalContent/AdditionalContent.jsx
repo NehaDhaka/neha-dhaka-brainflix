@@ -9,11 +9,15 @@ export default function AdditionalContent({
   filteredList,
   handleOnSubmit,
   handleOnClick,
+  handleLikeClick,
 }) {
   return (
     <section className="additional">
       <div className="additional__active">
-        <ActiveVideoDetails activeVideo={activeVideo} />
+        <ActiveVideoDetails
+          activeVideo={activeVideo}
+          handleLikeClick={handleLikeClick}
+        />
         <CommentForm handleOnSubmit={handleOnSubmit} />
         <ActiveVideoComments
           activeVideo={activeVideo.comments}

@@ -51,20 +51,18 @@ function App() {
   }
 
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Header />}>
-            <Route path="/" element={<HomePage videoList={videoList} />} />
-            <Route path="/:id" element={<HomePage videoList={videoList} />} />
-            <Route
-              path="/upload"
-              element={<UploadPage handleOnSubmit={handleOnSubmit} />}
-            />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Header />}>
+          <Route path="/" element={<HomePage videoList={videoList} />} />
+          <Route path="/:id" element={<HomePage videoList={videoList} />} />
+          <Route
+            path="/upload"
+            element={<UploadPage handleOnSubmit={handleOnSubmit} />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

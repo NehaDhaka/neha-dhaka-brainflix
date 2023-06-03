@@ -180,6 +180,7 @@
   &__cancel-btn {
     width: 100%;
     text-align: center;
+    text-decoration: none;
     @include tablet {
       width: 25%;
       display: flex;
